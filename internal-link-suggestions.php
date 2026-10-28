@@ -3,7 +3,7 @@
  * Plugin Name:       Internal Link Suggestions
  * Plugin URI:        https://www.contentpowered.com
  * Description:       Suggests internal links while you write, finds older posts that should link to new ones, and reports orphaned content.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.8
  * Requires PHP:      7.2
  * Author:            Content Powered

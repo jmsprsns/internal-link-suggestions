@@ -360,7 +360,8 @@ button.ils-count:focus-visible { outline: 2px solid var(--ils-accent); outline-o
 .ils-count.is-zero { padding: 2px 9px; background: #f0f0f1; color: var(--ils-muted); }
 .ils-count.is-orphan { background: var(--ils-amber-bg); color: var(--ils-amber); }
 
-.ils-find svg { width: 15px; height: 15px; }
+.ils-wrap .button.ils-find { display: inline-flex; align-items: center; gap: 5px; }
+.ils-wrap .button.ils-find svg { width: 15px; height: 15px; margin: 0; vertical-align: 0; }
 .ils-find[aria-expanded="true"] { border-color: var(--ils-accent); color: var(--ils-accent); }
 
 .ils-row.is-open > td,

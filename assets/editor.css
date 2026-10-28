@@ -1,0 +1,370 @@
+/**
+ * Suggestion lists: the block editor's Internal Links sidebar, the classic
+ * editor's box, and the report page's Find links rows. Built from WordPress's
+ * own pieces (components buttons, admin colours) so it sits in seamlessly.
+ */
+
+.ils-panel,
+.ils-page,
+.ils-prepublish {
+	--ils-accent: var(--wp-admin-theme-color, #3858e9);
+	--ils-accent-bg: #f0f4fe;
+	--ils-green: #00a32a;
+	--ils-green-bg: #edfaef;
+	--ils-amber: #996800;
+	--ils-amber-bg: #fcf9e8;
+	--ils-red: #d63638;
+	--ils-red-bg: #fcf0f1;
+	--ils-line: #f0f0f1;
+	--ils-border: #dcdcde;
+	--ils-muted: #646970;
+}
+
+.ils-i { display: inline-flex; flex: none; }
+.ils-i svg { display: block; width: 16px; height: 16px; }
+.ils-toolbar-icon svg { width: 24px; height: 24px; }
+
+.ils-spin svg,
+svg.ils-spin { animation: ils-spin 1s linear infinite; }
+
+@keyframes ils-spin {
+	to { transform: rotate(360deg); }
+}
+
+.ils-muted { color: var(--ils-muted); }
+.ils-small { margin: 12px 0 0; font-size: 12px; }
+
+/* Panel ----------------------------------------------------------------------- */
+
+.ils-sidebar { padding: 16px 16px 0; }
+.ils-sidebar .ils-settings { margin: 16px -16px 0; border-bottom: 0; }
+.ils-sidebar .components-panel__body.ils-settings { border-top: 1px solid #e0e0e0; }
+
+.ils-seg {
+	display: flex;
+	gap: 3px;
+	margin: 0 0 14px;
+	padding: 3px;
+	border-radius: 6px;
+	background: #f0f0f1;
+}
+
+.ils-seg-tab {
+	display: inline-flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-height: 32px;
+	padding: 4px 8px;
+	border: 0;
+	border-radius: 4px;
+	background: transparent;
+	color: #50575e;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.ils-seg-tab:hover { color: #1d2327; }
+.ils-seg-tab:focus-visible { outline: 2px solid var(--ils-accent); outline-offset: -2px; }
+
+.ils-seg-tab.is-active {
+	background: #fff;
+	color: #1d2327;
+	font-weight: 600;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+}
+
+.ils-seg-tab.is-active .ils-i { color: var(--ils-accent); }
+
+.ils-tab-count {
+	min-width: 18px;
+	padding: 0 5px;
+	border-radius: 9px;
+	background: var(--ils-accent);
+	color: #fff;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.ils-intro {
+	margin: 0 0 12px;
+	color: #50575e;
+	font-size: 13px;
+	line-height: 1.55;
+}
+
+.ils-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 12px;
+}
+
+.ils-toolbar > .ils-i { color: var(--ils-muted); }
+
+.ils-changed {
+	color: var(--ils-amber);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.ils-btn { gap: 4px; }
+.ils-btn .ils-i svg { width: 14px; height: 14px; }
+.components-button.ils-btn { height: auto; min-height: 26px; }
+.button.ils-btn { display: inline-flex; align-items: center; gap: 4px; }
+
+.ils-loading {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 8px 0 12px;
+	color: var(--ils-muted);
+}
+
+.ils-note {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	margin: 0 0 12px;
+	padding: 9px 11px;
+	border-radius: 4px;
+	background: #f0f6fc;
+	color: #1d2327;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.ils-note .ils-i { margin-top: 1px; color: var(--ils-accent); }
+.ils-note.is-warning { background: var(--ils-amber-bg); }
+.ils-note.is-warning .ils-i { color: var(--ils-amber); }
+.ils-note.is-error { background: var(--ils-red-bg); color: #8a2424; }
+.ils-note.is-error .ils-i { color: var(--ils-red); }
+
+/* Cards -------------------------------------------------------------------------- */
+
+.ils-list { display: grid; gap: 10px; }
+
+.ils-list-wide,
+#ils-classic .ils-list {
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	align-items: start;
+}
+
+.ils-item {
+	padding: 12px 12px 10px;
+	border: 1px solid var(--ils-border);
+	border-radius: 6px;
+	background: #fff;
+	transition: border-color .15s, background-color .15s;
+}
+
+.ils-item:hover { border-color: #c3c4c7; }
+
+.ils-item.is-done {
+	border-color: #b8e6bf;
+	background: #f7fcf8;
+}
+
+.ils-item-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 2px 8px;
+}
+
+.ils-item-title {
+	color: #1d2327;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-decoration: none;
+}
+
+a.ils-item-title:hover,
+a.ils-item-title:focus { color: var(--ils-accent); text-decoration: underline; }
+
+.ils-item-meta {
+	color: var(--ils-muted);
+	font-size: 12px;
+}
+
+.ils-badge {
+	padding: 0 6px;
+	border-radius: 4px;
+	background: var(--ils-amber-bg);
+	color: var(--ils-amber);
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.7;
+	white-space: nowrap;
+}
+
+.ils-sentence {
+	margin: 8px 0 10px;
+	padding: 8px 10px;
+	border-left: 3px solid var(--ils-border);
+	border-radius: 0 4px 4px 0;
+	background: #f6f7f7;
+	color: #3c434a;
+	font-size: 13px;
+	line-height: 1.6;
+	overflow-wrap: anywhere;
+}
+
+.ils-sentence mark,
+mark.ils-anchor {
+	padding: 0 2px;
+	border-radius: 3px;
+	background: var(--ils-accent-bg);
+	color: var(--ils-accent);
+	font-weight: 600;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+.ils-item.is-done .ils-sentence mark { background: var(--ils-green-bg); color: #00701a; }
+
+.ils-item-foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 10px;
+}
+
+.ils-strength {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	color: #3c434a;
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.ils-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #c3c4c7;
+}
+
+.ils-strength.is-strong .ils-dot { background: var(--ils-green); }
+.ils-strength.is-good .ils-dot { background: var(--ils-accent); }
+.ils-strength.is-fair .ils-dot { background: #dba617; }
+
+.ils-reason {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	color: var(--ils-muted);
+	font-size: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ils-item-actions {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-left: auto;
+}
+
+.ils-sidebar .ils-item-foot .ils-reason { flex-basis: 100%; order: 2; white-space: normal; }
+.ils-sidebar .ils-item-actions { order: 1; }
+
+.ils-done {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	color: #00701a;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.ils-done .ils-i svg { width: 15px; height: 15px; }
+
+.ils-undo.components-button,
+.button-link.ils-undo { height: auto; padding: 0; font-size: 12px; }
+
+.ils-blocked { font-size: 12px; }
+
+.ils-error {
+	margin: 8px 0 0;
+	color: #b32d2e;
+	font-size: 12px;
+}
+
+/* Keywords ------------------------------------------------------------------------ */
+
+.ils-seo {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 6px;
+	margin: -4px 0 14px;
+	font-size: 12px;
+}
+
+.ils-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 1px 8px;
+	border-radius: 999px;
+	background: #f0f0f1;
+	color: #2c3338;
+	font-size: 12px;
+	line-height: 1.7;
+}
+
+.ils-chip .ils-i svg { width: 12px; height: 12px; }
+
+.ils-save-state { margin: 4px 0 0; font-size: 12px; color: var(--ils-muted); }
+.ils-save-state.is-saved { color: #00701a; }
+.ils-save-state.is-error { color: #b32d2e; }
+
+.ils-report-link { margin: 0; padding: 14px 0 16px; border-top: 1px solid #e0e0e0; }
+
+.ils-report-link a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+.ils-sidebar .ils-settings + .ils-report-link { margin-top: 0; }
+
+/* Classic editor box --------------------------------------------------------------- */
+
+#ils-classic { padding-top: 4px; }
+#ils-classic .ils-seg { max-width: 420px; }
+
+.ils-classic-settings {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 12px 24px;
+	margin-top: 16px;
+	padding-top: 14px;
+	border-top: 1px solid var(--ils-line);
+}
+
+.ils-label { display: block; margin: 0 0 6px; font-weight: 600; }
+.ils-classic-settings .description { margin: 6px 0 8px; }
+.ils-check { display: inline-flex; align-items: flex-start; gap: 6px; line-height: 1.5; }
+.ils-check input { margin-top: 2px !important; }
+
+/* Pre-publish panel ---------------------------------------------------------------- */
+
+.ils-prepublish p { margin: 0 0 10px; }
